@@ -26,7 +26,7 @@ namespace Project
         {
             pnlCategories.Controls.Clear();
 
-            string query = "SELECT CategoryID, Name FROM Category";
+            string query = "SELECT CategoryId, Name FROM Category";
             DataTable table = new DataTable();
 
             using (SqlConnection con = _dbService.GetConnection())
@@ -45,7 +45,7 @@ namespace Project
 
             foreach (DataRow row in table.Rows)
             {
-                int catId = Convert.ToInt32(row["CategoryID"]);
+                int catId = Convert.ToInt32(row["CategoryId"]);
                 string catName = row["Name"].ToString();
 
                 Panel card = new Panel();
@@ -176,8 +176,8 @@ namespace Project
 
         private void OpenProductDetails(int productId)
         {
-            // Product details screen is built by another teammate; placeholder for now.
-            MessageBox.Show("Product details for ID " + productId + " will open here.", "Info");
+            ProductDetailsForm details = new ProductDetailsForm(productId);
+            details.ShowDialog();
         }
 
         private void btnSearch_Click(object sender, EventArgs e)

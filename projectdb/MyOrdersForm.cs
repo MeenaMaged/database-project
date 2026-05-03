@@ -27,15 +27,25 @@ namespace Project
 
         private void LoadOrders()
         {
+            if (!projectdb.Session.UserId.HasValue)
+            {
+                MessageBox.Show("Please login to view your orders.");
+                this.Close();
+                return;
+            }
+
+            int currentUserId = projectdb.Session.UserId.Value;
+
             // Clear existing columns in case we reload
             dataGridView1.Columns.Clear();
             dataGridView1.DataSource = null;
 
-            string query = "SELECT OrderId, UserId, Status, CreatedAt FROM Orders";
+            string query = "SELECT OrderId, UserId, Status, CreatedAt FROM Orders WHERE UserId = @UserId";
 
             using (SqlConnection con = _dbService.GetConnection())
             {
                 SqlDataAdapter adapter = new SqlDataAdapter(query, con);
+                adapter.SelectCommand.Parameters.AddWithValue("@UserId", currentUserId);
                 DataTable table = new DataTable();
                 adapter.Fill(table);
                 dataGridView1.DataSource = table;
