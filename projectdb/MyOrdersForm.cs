@@ -31,11 +31,18 @@ namespace Project
             dataGridView1.Columns.Clear();
             dataGridView1.DataSource = null;
 
-            string query = "SELECT OrderId, UserId, Status, CreatedAt FROM Orders";
+            if (!projectdb.Session.UserId.HasValue)
+            {
+                MessageBox.Show("No logged-in user found. Please login again.");
+                return;
+            }
+
+            string query = "SELECT OrderId, UserId, Status, CreatedAt FROM Orders WHERE UserId = @userId";
 
             using (SqlConnection con = _dbService.GetConnection())
             {
                 SqlDataAdapter adapter = new SqlDataAdapter(query, con);
+                adapter.SelectCommand.Parameters.AddWithValue("@userId", projectdb.Session.UserId.Value);
                 DataTable table = new DataTable();
                 adapter.Fill(table);
                 dataGridView1.DataSource = table;
