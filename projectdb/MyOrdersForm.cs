@@ -35,24 +35,18 @@ namespace Project
             }
 
             int currentUserId = projectdb.Session.UserId.Value;
+            DataTable table = new DataTable();
 
             // Clear existing columns in case we reload
             dataGridView1.Columns.Clear();
             dataGridView1.DataSource = null;
-
-            if (!projectdb.Session.UserId.HasValue)
-            {
-                MessageBox.Show("No logged-in user found. Please login again.");
-                return;
-            }
 
             string query = "SELECT OrderId, UserId, Status, CreatedAt FROM Orders WHERE UserId = @userId";
 
             using (SqlConnection con = _dbService.GetConnection())
             {
                 SqlDataAdapter adapter = new SqlDataAdapter(query, con);
-                adapter.SelectCommand.Parameters.AddWithValue("@userId", projectdb.Session.UserId.Value);
-                DataTable table = new DataTable();
+                adapter.SelectCommand.Parameters.AddWithValue("@userId", currentUserId);
                 adapter.Fill(table);
                 dataGridView1.DataSource = table;
             }
@@ -65,7 +59,17 @@ namespace Project
             cancelBtnColumn.UseColumnTextForButtonValue = true; // Makes the text show up on the button
 
             // Add the button column to the very end of the grid
-            dataGridView1.Columns.Add(cancelBtnColumn);
+            bool hasPendingOrder = table.AsEnumerable().Any(row =>
+                string.Equals(
+                    row["Status"]?.ToString()?.Trim(),
+                    "Pending",
+                    StringComparison.OrdinalIgnoreCase));
+
+            if (hasPendingOrder)
+            {
+                dataGridView1.Columns.Add(cancelBtnColumn);
+            }
+          
         }
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
