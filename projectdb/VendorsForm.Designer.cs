@@ -1,4 +1,4 @@
-﻿namespace Project
+namespace Project
 {
     partial class VendorsForm
     {
@@ -40,6 +40,7 @@
             dataGridView1.RowHeadersWidth = 62;
             dataGridView1.Size = new Size(705, 414);
             dataGridView1.TabIndex = 0;
+            dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             // 
             // VendorsForm
             // 

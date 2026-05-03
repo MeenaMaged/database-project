@@ -21,6 +21,12 @@ namespace Project
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.buttonSave = new System.Windows.Forms.Button();
+            this.textBoxDescription = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.textBoxStock = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.comboBoxCategory = new System.Windows.Forms.ComboBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // textBoxName
@@ -39,11 +45,13 @@ namespace Project
             // 
             // comboBoxVendor
             // 
+            this.comboBoxVendor.Enabled = false;
             this.comboBoxVendor.FormattingEnabled = true;
-            this.comboBoxVendor.Location = new System.Drawing.Point(132, 124);
+            this.comboBoxVendor.Location = new System.Drawing.Point(132, 310);
             this.comboBoxVendor.Name = "comboBoxVendor";
             this.comboBoxVendor.Size = new System.Drawing.Size(232, 33);
             this.comboBoxVendor.TabIndex = 2;
+            this.comboBoxVendor.Visible = false;
             // 
             // label1
             // 
@@ -66,15 +74,16 @@ namespace Project
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(41, 127);
+            this.label3.Location = new System.Drawing.Point(41, 313);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(69, 25);
             this.label3.TabIndex = 5;
             this.label3.Text = "Vendor";
+            this.label3.Visible = false;
             // 
             // buttonSave
             // 
-            this.buttonSave.Location = new System.Drawing.Point(132, 178);
+            this.buttonSave.Location = new System.Drawing.Point(132, 360);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(232, 44);
             this.buttonSave.TabIndex = 6;
@@ -82,11 +91,67 @@ namespace Project
             this.buttonSave.UseVisualStyleBackColor = true;
             this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
             // 
+            // textBoxDescription
+            // 
+            this.textBoxDescription.Location = new System.Drawing.Point(132, 120);
+            this.textBoxDescription.Multiline = true;
+            this.textBoxDescription.Name = "textBoxDescription";
+            this.textBoxDescription.Size = new System.Drawing.Size(232, 80);
+            this.textBoxDescription.TabIndex = 7;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(41, 123);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(102, 25);
+            this.label4.TabIndex = 8;
+            this.label4.Text = "Description";
+            // 
+            // textBoxStock
+            // 
+            this.textBoxStock.Location = new System.Drawing.Point(132, 215);
+            this.textBoxStock.Name = "textBoxStock";
+            this.textBoxStock.Size = new System.Drawing.Size(232, 31);
+            this.textBoxStock.TabIndex = 9;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(41, 218);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(55, 25);
+            this.label5.TabIndex = 10;
+            this.label5.Text = "Stock";
+            // 
+            // comboBoxCategory
+            // 
+            this.comboBoxCategory.FormattingEnabled = true;
+            this.comboBoxCategory.Location = new System.Drawing.Point(132, 260);
+            this.comboBoxCategory.Name = "comboBoxCategory";
+            this.comboBoxCategory.Size = new System.Drawing.Size(232, 33);
+            this.comboBoxCategory.TabIndex = 11;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(41, 263);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(84, 25);
+            this.label6.TabIndex = 12;
+            this.label6.Text = "Category";
+            // 
             // ProductEditForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(412, 244);
+            this.ClientSize = new System.Drawing.Size(412, 430);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.comboBoxCategory);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.textBoxStock);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.textBoxDescription);
             this.Controls.Add(this.buttonSave);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -107,5 +172,11 @@ namespace Project
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button buttonSave;
+        private System.Windows.Forms.TextBox textBoxDescription;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox textBoxStock;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.ComboBox comboBoxCategory;
+        private System.Windows.Forms.Label label6;
     }
 }

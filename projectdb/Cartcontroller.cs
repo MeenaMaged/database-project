@@ -1,4 +1,4 @@
-﻿using Microsoft.Data.SqlClient;
+using Microsoft.Data.SqlClient;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -23,18 +23,18 @@ namespace projectdb
             {
                 // This query finds the OrderID first, then joins to get the items
                 string query = @"
-    SELECT oi.ProductID, 
+    SELECT oi.ProductId, 
            p.Name AS [Product], 
            oi.Quantity, 
            oi.UnitPrice AS [Price], 
            (oi.Quantity * oi.UnitPrice) AS [Total]
     FROM OrderItem oi
-    JOIN Product p ON oi.ProductID = p.ProductID
-    JOIN Orders o ON oi.OrderID = o.OrderID
-    WHERE o.UserID = @UserID AND o.Status = 'Pending'";
+    JOIN Product p ON oi.ProductId = p.ProductId
+    JOIN Orders o ON oi.OrderId = o.OrderId
+    WHERE o.UserId = @UserId AND o.Status = 'Pending'";
 
                 SqlDataAdapter adapter = new SqlDataAdapter(query, con);
-                adapter.SelectCommand.Parameters.AddWithValue("@UserID", userId);
+                adapter.SelectCommand.Parameters.AddWithValue("@UserId", userId);
 
                 try
                 {
@@ -49,13 +49,13 @@ namespace projectdb
         }
         public bool ConfirmOrderByUserId(int userId)
         {
-            string query = "UPDATE Orders SET Status = 'Confirmed' WHERE UserID = @UserID";
+            string query = "UPDATE Orders SET Status = 'Confirmed' WHERE UserId = @UserId";
             projectdb.DatabaseService dbService = new projectdb.DatabaseService();
 
             using (SqlConnection con = dbService.GetConnection())
             {
                 SqlCommand cmd = new SqlCommand(query, con);
-                cmd.Parameters.AddWithValue("@UserID", userId);
+                cmd.Parameters.AddWithValue("@UserId", userId);
 
                 con.Open();
                 int rowsAffected = cmd.ExecuteNonQuery();
@@ -67,14 +67,14 @@ namespace projectdb
         {
             string query = @"SELECT SUM(oi.Quantity * oi.UnitPrice) 
                      FROM OrderItem oi
-                     JOIN Orders o ON oi.OrderID = o.OrderID
-                     WHERE o.UserID = @UserID AND o.Status = 'Pending'";
+                     JOIN Orders o ON oi.OrderId = o.OrderId
+                     WHERE o.UserId = @UserId AND o.Status = 'Pending'";
 
             projectdb.DatabaseService dbService = new projectdb.DatabaseService();
             using (SqlConnection con = dbService.GetConnection())
             {
                 SqlCommand cmd = new SqlCommand(query, con);
-                cmd.Parameters.AddWithValue("@UserID", userId);
+                cmd.Parameters.AddWithValue("@UserId", userId);
                 con.Open();
 
                 object result = cmd.ExecuteScalar(); // ExecuteScalar is best for single values
@@ -87,16 +87,16 @@ namespace projectdb
         {
             // We target the OrderItem belonging to the user's 'Pending' order
             string query = @"DELETE oi FROM OrderItem oi
-                     JOIN Orders o ON oi.OrderID = o.OrderID
-                     WHERE o.UserID = @UserID AND oi.ProductID = @ProductID 
+                     JOIN Orders o ON oi.OrderId = o.OrderId
+                     WHERE o.UserId = @UserId AND oi.ProductId = @ProductId 
                      AND o.Status = 'Pending'";
 
             projectdb.DatabaseService dbService = new projectdb.DatabaseService();
             using (SqlConnection con = dbService.GetConnection())
             {
                 SqlCommand cmd = new SqlCommand(query, con);
-                cmd.Parameters.AddWithValue("@UserID", userId);
-                cmd.Parameters.AddWithValue("@ProductID", productId);
+                cmd.Parameters.AddWithValue("@UserId", userId);
+                cmd.Parameters.AddWithValue("@ProductId", productId);
                 con.Open();
                 return cmd.ExecuteNonQuery() > 0;
             }

@@ -1,4 +1,4 @@
-﻿using Microsoft.Data.SqlClient;
+using Microsoft.Data.SqlClient;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -31,7 +31,7 @@ namespace Project
             dataGridView1.Columns.Clear();
             dataGridView1.DataSource = null;
 
-            string query = "SELECT ID, UserID, Status, CreatedAt FROM Orders";
+            string query = "SELECT OrderId, UserId, Status, CreatedAt FROM Orders";
 
             using (SqlConnection con = _dbService.GetConnection())
             {
@@ -58,7 +58,7 @@ namespace Project
             {
                 // Get the status and ID from the row they clicked
                 string currentStatus = dataGridView1.Rows[e.RowIndex].Cells["Status"].Value.ToString();
-                int orderId = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells["ID"].Value);
+                int orderId = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells["OrderId"].Value);
 
                 // Check the requirement: ONLY pending orders can be cancelled
                 if (currentStatus == "Pending")
@@ -80,7 +80,7 @@ namespace Project
         // Helper method to actually update the database
         private void CancelOrder(int orderId)
         {
-            string query = "UPDATE Orders SET Status = 'Cancelled' WHERE ID = @id";
+            string query = "UPDATE Orders SET Status = 'Cancelled' WHERE OrderId = @id";
 
             using (SqlConnection con = _dbService.GetConnection())
             {

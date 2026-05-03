@@ -1,16 +1,9 @@
 namespace Project
 {
-    partial class ProductsForm
+    partial class VendorScreen
     {
-        /// <summary>
-        /// Required designer variable.
-        /// </summary>
         private System.ComponentModel.IContainer components = null;
 
-        /// <summary>
-        /// Clean up any resources being used.
-        /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -22,15 +15,11 @@ namespace Project
 
         #region Windows Form Designer generated code
 
-        /// <summary>
-        /// Required method for Designer support - do not modify
-        /// the contents of this method with the code editor.
-        /// </summary>
         private void InitializeComponent()
         {
             dataGridView1 = new DataGridView();
-            button1 = new Button();
-           // button2 = new Button();
+            btnDeleteSelected = new Button();
+            btnAdd = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
@@ -40,30 +29,41 @@ namespace Project
             dataGridView1.Location = new Point(31, 47);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 62;
-            dataGridView1.Size = new Size(508, 351);
+            dataGridView1.Size = new Size(1387, 401);
             dataGridView1.TabIndex = 0;
             dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             // 
-            // button1
+            // btnDeleteSelected
             // 
-            button1.Location = new Point(572, 337);
-            button1.Name = "button1";
-            button1.Size = new Size(194, 61);
-            button1.TabIndex = 1;
-            button1.Text = "Delete Selected product";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
+            btnDeleteSelected.Location = new Point(1053, 474);
+            btnDeleteSelected.Name = "btnDeleteSelected";
+            btnDeleteSelected.Size = new Size(194, 61);
+            btnDeleteSelected.TabIndex = 1;
+            btnDeleteSelected.Text = "Delete Selected product";
+            btnDeleteSelected.UseVisualStyleBackColor = true;
+            btnDeleteSelected.Click += btnDeleteSelected_Click;
             // 
-            // ProductsForm
+            // btnAdd
+            // 
+            btnAdd.Location = new Point(1253, 474);
+            btnAdd.Name = "btnAdd";
+            btnAdd.Size = new Size(194, 61);
+            btnAdd.TabIndex = 2;
+            btnAdd.Text = "Add New Product";
+            btnAdd.UseVisualStyleBackColor = true;
+            btnAdd.Click += btnAdd_Click;
+            // 
+            // VendorScreen
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
-            Controls.Add(button1);
+            ClientSize = new Size(1483, 564);
+            Controls.Add(btnDeleteSelected);
+            Controls.Add(btnAdd);
             Controls.Add(dataGridView1);
-            Name = "ProductsForm";
-            Text = "ProductsForm";
-            Load += ProductsForm_Load;
+            Name = "VendorScreen";
+            Text = "Vendor Dashboard - My Products";
+            Load += VendorScreen_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
         }
@@ -71,6 +71,7 @@ namespace Project
         #endregion
 
         private DataGridView dataGridView1;
-        private Button button1;
+        private Button btnDeleteSelected;
+        private Button btnAdd;
     }
 }

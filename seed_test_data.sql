@@ -10,14 +10,14 @@ INSERT INTO Users (Email, Password, Role, FirstName, LastName)
 VALUES ('vendor_test@mail.com', 'password', 'Vendor', 'Test', 'Vendor');
 SET @vendUserId = SCOPE_IDENTITY();
 
-INSERT INTO Vendor (UserID, StoreName) VALUES (@vendUserId, 'Test Store');
+INSERT INTO Vendor (UserId, StoreName) VALUES (@vendUserId, 'Test Store');
 SET @vendId = SCOPE_IDENTITY();
 
 INSERT INTO Category (Name) VALUES ('Electronics');  SET @cat1 = SCOPE_IDENTITY();
 INSERT INTO Category (Name) VALUES ('Books');        SET @cat2 = SCOPE_IDENTITY();
 INSERT INTO Category (Name) VALUES ('Clothing');     SET @cat3 = SCOPE_IDENTITY();
 
-INSERT INTO Product (VendorID, CategoryID, Name, Description, Price, Stock) VALUES
+INSERT INTO Product (VendorId, CategoryId, Name, Description, Price, Stock) VALUES
  (@vendId, @cat1, 'Laptop',     'Fast laptop',   25000, 5),
  (@vendId, @cat1, 'Headphones', 'Noise-cancel',  800,   0),
  (@vendId, @cat2, 'SQL Book',   'Elmasri DB',    350,   12),

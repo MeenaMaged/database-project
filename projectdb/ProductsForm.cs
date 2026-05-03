@@ -1,4 +1,4 @@
-﻿using Microsoft.Data.SqlClient;
+using Microsoft.Data.SqlClient;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -79,11 +79,11 @@ namespace Project
 
                 if (dialogResult == DialogResult.Yes)
                 {
-                    // Get the ID from the selected row (Assuming ID is the first column - Index 0)
+                    // Get the ID from the selected row (Assuming ProductId is the first column - Index 0)
                     int selectedId = Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[0].Value);
 
                     // The SQL command to delete the specific product
-                    string query = "DELETE FROM Product WHERE ID = @id"; // CHANGE 'ID' IF YOUR COLUMN NAME IS DIFFERENT
+                    string query = "DELETE FROM Product WHERE ProductId = @id"; // CHANGE 'ID' IF YOUR COLUMN NAME IS DIFFERENT
 
                     using (SqlConnection con = _dbService.GetConnection())
                     {
@@ -157,7 +157,7 @@ namespace Project
                 DialogResult dialogResult = MessageBox.Show("Are you sure you want to delete this product?", "Confirm Deletion", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 if (dialogResult == DialogResult.Yes)
                 {
-                    string query = "DELETE FROM Product WHERE ID = @id";
+                    string query = "DELETE FROM Product WHERE ProductId = @id";
                     using (SqlConnection con = _dbService.GetConnection())
                     using (SqlCommand cmd = new SqlCommand(query, con))
                     {
@@ -181,16 +181,6 @@ namespace Project
                         }
                     }
                 }
-            }
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            // Show a simple add/edit form
-            var form = new ProductEditForm(_dbService);
-            if (form.ShowDialog() == DialogResult.OK)
-            {
-                LoadData();
             }
         }
     }

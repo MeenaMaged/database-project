@@ -92,7 +92,7 @@ namespace Project
         {
             pnlProducts.Controls.Clear();
 
-            string query = "SELECT ProductID, Name, Price, Stock FROM Product";
+            string query = "SELECT ProductId, Name, Price, Stock FROM Product";
             DataTable table = new DataTable();
 
             using (SqlConnection con = _dbService.GetConnection())
@@ -123,7 +123,7 @@ namespace Project
 
             foreach (DataRow row in table.Rows)
             {
-                int productId = Convert.ToInt32(row["ProductID"]);
+                int productId = Convert.ToInt32(row["ProductId"]);
                 string name = row["Name"].ToString();
                 decimal price = Convert.ToDecimal(row["Price"]);
                 int stock = Convert.ToInt32(row["Stock"]);
