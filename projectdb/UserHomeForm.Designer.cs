@@ -33,9 +33,9 @@ namespace Project
             pnlProducts = new FlowLayoutPanel();
             pnlTopBar.SuspendLayout();
             SuspendLayout();
-            //
+            // 
             // pnlTopBar
-            //
+            // 
             pnlTopBar.BackColor = Color.FromArgb(64, 64, 96);
             pnlTopBar.Controls.Add(btnSearch);
             pnlTopBar.Controls.Add(btnProfile);
@@ -43,104 +43,104 @@ namespace Project
             pnlTopBar.Dock = DockStyle.Top;
             pnlTopBar.Location = new Point(0, 0);
             pnlTopBar.Name = "pnlTopBar";
-            pnlTopBar.Size = new Size(1000, 55);
+            pnlTopBar.Size = new Size(1205, 55);
             pnlTopBar.TabIndex = 0;
-            //
+            // 
             // btnSearch
-            //
+            // 
             btnSearch.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             btnSearch.FlatStyle = FlatStyle.Flat;
             btnSearch.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
             btnSearch.ForeColor = Color.White;
-            btnSearch.Location = new Point(820, 10);
+            btnSearch.Location = new Point(801, 10);
             btnSearch.Name = "btnSearch";
-            btnSearch.Size = new Size(55, 36);
+            btnSearch.Size = new Size(125, 36);
             btnSearch.TabIndex = 0;
             btnSearch.Text = "Search";
             btnSearch.UseVisualStyleBackColor = true;
             btnSearch.Click += btnSearch_Click;
-            //
+            // 
             // btnProfile
-            //
+            // 
             btnProfile.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             btnProfile.FlatStyle = FlatStyle.Flat;
             btnProfile.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
             btnProfile.ForeColor = Color.White;
-            btnProfile.Location = new Point(881, 10);
+            btnProfile.Location = new Point(941, 10);
             btnProfile.Name = "btnProfile";
-            btnProfile.Size = new Size(55, 36);
+            btnProfile.Size = new Size(143, 36);
             btnProfile.TabIndex = 1;
-            btnProfile.Text = "Profile";
+            btnProfile.Text = "My Orders";
             btnProfile.UseVisualStyleBackColor = true;
             btnProfile.Click += btnProfile_Click;
-            //
+            // 
             // btnCart
-            //
+            // 
             btnCart.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             btnCart.FlatStyle = FlatStyle.Flat;
             btnCart.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
             btnCart.ForeColor = Color.White;
-            btnCart.Location = new Point(942, 10);
+            btnCart.Location = new Point(1100, 10);
             btnCart.Name = "btnCart";
-            btnCart.Size = new Size(48, 36);
+            btnCart.Size = new Size(95, 36);
             btnCart.TabIndex = 2;
             btnCart.Text = "Cart";
             btnCart.UseVisualStyleBackColor = true;
             btnCart.Click += btnCart_Click;
-            //
+            // 
             // lblCategories
-            //
+            // 
             lblCategories.AutoSize = true;
             lblCategories.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
-            lblCategories.Location = new Point(15, 70);
+            lblCategories.Location = new Point(15, 60);
             lblCategories.Name = "lblCategories";
-            lblCategories.Size = new Size(110, 21);
+            lblCategories.Size = new Size(130, 32);
             lblCategories.TabIndex = 1;
             lblCategories.Text = "Categories";
-            //
+            // 
             // pnlCategories
-            //
+            // 
             pnlCategories.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             pnlCategories.AutoScroll = true;
             pnlCategories.BorderStyle = BorderStyle.FixedSingle;
             pnlCategories.Location = new Point(15, 95);
             pnlCategories.Name = "pnlCategories";
-            pnlCategories.Size = new Size(970, 130);
+            pnlCategories.Size = new Size(1175, 130);
             pnlCategories.TabIndex = 2;
             pnlCategories.WrapContents = false;
-            //
+            // 
             // lblProducts
-            //
+            // 
             lblProducts.AutoSize = true;
             lblProducts.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
-            lblProducts.Location = new Point(15, 240);
+            lblProducts.Location = new Point(15, 228);
             lblProducts.Name = "lblProducts";
-            lblProducts.Size = new Size(90, 21);
+            lblProducts.Size = new Size(109, 32);
             lblProducts.TabIndex = 3;
             lblProducts.Text = "Products";
-            //
+            // 
             // pnlProducts
-            //
+            // 
             pnlProducts.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             pnlProducts.AutoScroll = true;
             pnlProducts.BorderStyle = BorderStyle.FixedSingle;
             pnlProducts.Location = new Point(15, 265);
             pnlProducts.Name = "pnlProducts";
-            pnlProducts.Size = new Size(970, 440);
+            pnlProducts.Size = new Size(1175, 440);
             pnlProducts.TabIndex = 4;
-            //
+            // 
             // UserHomeForm
-            //
+            // 
             AutoScaleMode = AutoScaleMode.None;
-            ClientSize = new Size(1000, 720);
-            MinimumSize = new Size(940, 700);
-            StartPosition = FormStartPosition.CenterScreen;
+            ClientSize = new Size(1205, 720);
             Controls.Add(pnlProducts);
             Controls.Add(lblProducts);
             Controls.Add(pnlCategories);
             Controls.Add(lblCategories);
             Controls.Add(pnlTopBar);
+            MinimumSize = new Size(940, 700);
             Name = "UserHomeForm";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Home";
             Load += UserHomeForm_Load;
             pnlTopBar.ResumeLayout(false);

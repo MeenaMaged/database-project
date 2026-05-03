@@ -1,4 +1,5 @@
 using Microsoft.Data.SqlClient;
+using projectdb;
 using System;
 using System.Data;
 using System.Drawing;
@@ -181,20 +182,21 @@ namespace Project
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            // Search screen is handled by another teammate.
-            MessageBox.Show("Search will open here.", "Info");
+            search s = new search();
+            s.Show();
         }
 
         private void btnProfile_Click(object sender, EventArgs e)
         {
-            // My Orders / profile screen is handled by another teammate.
-            MessageBox.Show("Profile / My Orders will open here.", "Info");
+            MyOrdersForm orders =new  MyOrdersForm();
+            orders.Show();
         }
 
         private void btnCart_Click(object sender, EventArgs e)
         {
-            // Cart screen is handled by another teammate.
-            MessageBox.Show("Cart will open here.", "Info");
+            Cart cart = new Cart();
+            cart.Show();
+
         }
     }
 }
