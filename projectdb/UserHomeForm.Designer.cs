@@ -105,7 +105,7 @@ namespace Project
             pnlCategories.BorderStyle = BorderStyle.FixedSingle;
             pnlCategories.Location = new Point(15, 95);
             pnlCategories.Name = "pnlCategories";
-            pnlCategories.Size = new Size(1175, 130);
+            pnlCategories.Size = new Size(1175, 154);
             pnlCategories.TabIndex = 2;
             pnlCategories.WrapContents = false;
             // 
@@ -113,7 +113,7 @@ namespace Project
             // 
             lblProducts.AutoSize = true;
             lblProducts.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
-            lblProducts.Location = new Point(15, 228);
+            lblProducts.Location = new Point(15, 252);
             lblProducts.Name = "lblProducts";
             lblProducts.Size = new Size(109, 32);
             lblProducts.TabIndex = 3;
@@ -124,9 +124,9 @@ namespace Project
             pnlProducts.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             pnlProducts.AutoScroll = true;
             pnlProducts.BorderStyle = BorderStyle.FixedSingle;
-            pnlProducts.Location = new Point(15, 265);
+            pnlProducts.Location = new Point(15, 287);
             pnlProducts.Name = "pnlProducts";
-            pnlProducts.Size = new Size(1175, 440);
+            pnlProducts.Size = new Size(1175, 418);
             pnlProducts.TabIndex = 4;
             // 
             // UserHomeForm
