@@ -1,4 +1,4 @@
-﻿namespace Project
+namespace Project
 {
     partial class ProductsForm
     {
@@ -30,7 +30,7 @@
         {
             dataGridView1 = new DataGridView();
             button1 = new Button();
-            button2 = new Button();
+           // button2 = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
@@ -54,23 +54,12 @@
             button1.UseVisualStyleBackColor = true;
             button1.Click += button1_Click;
             // 
-            // button2
-            // 
-            button2.Location = new Point(572, 260);
-            button2.Name = "button2";
-            button2.Size = new Size(194, 61);
-            button2.TabIndex = 2;
-            button2.Text = "Add New Product";
-            button2.UseVisualStyleBackColor = true;
-            button2.Click += button2_Click;
-            // 
             // ProductsForm
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
             Controls.Add(button1);
-            Controls.Add(button2);
             Controls.Add(dataGridView1);
             Name = "ProductsForm";
             Text = "ProductsForm";
@@ -83,6 +72,5 @@
 
         private DataGridView dataGridView1;
         private Button button1;
-        private Button button2;
     }
 }

@@ -125,7 +125,7 @@ namespace Project
             if (grid.Columns[e.ColumnIndex].Name == "Edit")
             {
                 int id = Convert.ToInt32(grid.Rows[e.RowIndex].Cells[0].Value);
-                var editForm = new ProductEditForm(_dbService, id);
+                var editForm = new ProductEditForm(_dbService, id, _vendorId);
                 if (editForm.ShowDialog() == DialogResult.OK)
                 {
                     LoadData();
@@ -173,7 +173,7 @@ namespace Project
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            var form = new ProductEditForm(_dbService);
+            var form = new ProductEditForm(_dbService, true, _vendorId);
             if (form.ShowDialog() == DialogResult.OK)
             {
                 LoadData();

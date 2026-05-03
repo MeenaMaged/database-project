@@ -183,15 +183,5 @@ namespace Project
                 }
             }
         }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            // Show a simple add/edit form
-            var form = new ProductEditForm(_dbService);
-            if (form.ShowDialog() == DialogResult.OK)
-            {
-                LoadData();
-            }
-        }
     }
 }

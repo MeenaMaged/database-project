@@ -29,13 +29,13 @@ namespace Project
             dataGridView1.Location = new Point(31, 47);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 62;
-            dataGridView1.Size = new Size(508, 351);
+            dataGridView1.Size = new Size(1387, 401);
             dataGridView1.TabIndex = 0;
             dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             // 
             // btnDeleteSelected
             // 
-            btnDeleteSelected.Location = new Point(572, 337);
+            btnDeleteSelected.Location = new Point(1053, 474);
             btnDeleteSelected.Name = "btnDeleteSelected";
             btnDeleteSelected.Size = new Size(194, 61);
             btnDeleteSelected.TabIndex = 1;
@@ -45,7 +45,7 @@ namespace Project
             // 
             // btnAdd
             // 
-            btnAdd.Location = new Point(572, 260);
+            btnAdd.Location = new Point(1253, 474);
             btnAdd.Name = "btnAdd";
             btnAdd.Size = new Size(194, 61);
             btnAdd.TabIndex = 2;
@@ -57,7 +57,7 @@ namespace Project
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(1483, 564);
             Controls.Add(btnDeleteSelected);
             Controls.Add(btnAdd);
             Controls.Add(dataGridView1);
