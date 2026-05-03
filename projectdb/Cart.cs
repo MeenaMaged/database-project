@@ -13,7 +13,7 @@ namespace projectdb
     public partial class Cart : Form
     {
         private Cartcontroller _controller = new Cartcontroller();
-        private int _userid = -1;
+        private int _userid;
         public Cart()
         {
             InitializeComponent();
@@ -24,12 +24,14 @@ namespace projectdb
         }
         private void CartForm_Load(object sender, EventArgs e)
         {
-            if (_userid == -1)
+            if (!Session.UserId.HasValue)
             {
-                MessageBox.Show("Please login to view your cart.");
-                this.Close();
+                MessageBox.Show("No logged-in user found. Please login again.");
+                Close();
                 return;
             }
+
+            _userid = Session.UserId.Value;
             LoadCart();
         }
 

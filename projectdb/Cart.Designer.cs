@@ -38,9 +38,10 @@
             // btnconfirmorder
             // 
             btnconfirmorder.BackColor = Color.LightGreen;
-            btnconfirmorder.Location = new Point(607, 130);
+            btnconfirmorder.Location = new Point(1057, 529);
+            btnconfirmorder.Margin = new Padding(4, 4, 4, 4);
             btnconfirmorder.Name = "btnconfirmorder";
-            btnconfirmorder.Size = new Size(142, 29);
+            btnconfirmorder.Size = new Size(178, 36);
             btnconfirmorder.TabIndex = 0;
             btnconfirmorder.Text = "Confirm Order";
             btnconfirmorder.UseVisualStyleBackColor = false;
@@ -49,18 +50,20 @@
             // dataGridView1
             // 
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(12, 44);
+            dataGridView1.Location = new Point(15, 55);
+            dataGridView1.Margin = new Padding(4, 4, 4, 4);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 51;
-            dataGridView1.Size = new Size(546, 367);
+            dataGridView1.Size = new Size(1220, 459);
             dataGridView1.TabIndex = 1;
             // 
             // btnRemove
             // 
             btnRemove.BackColor = Color.Red;
-            btnRemove.Location = new Point(607, 328);
+            btnRemove.Location = new Point(15, 529);
+            btnRemove.Margin = new Padding(4, 4, 4, 4);
             btnRemove.Name = "btnRemove";
-            btnRemove.Size = new Size(142, 30);
+            btnRemove.Size = new Size(178, 38);
             btnRemove.TabIndex = 2;
             btnRemove.Text = "Remove";
             btnRemove.UseVisualStyleBackColor = false;
@@ -69,24 +72,27 @@
             // lblTotal
             // 
             lblTotal.AutoSize = true;
-            lblTotal.Location = new Point(607, 97);
+            lblTotal.Location = new Point(929, 536);
+            lblTotal.Margin = new Padding(4, 0, 4, 0);
             lblTotal.Name = "lblTotal";
-            lblTotal.Size = new Size(84, 20);
+            lblTotal.Size = new Size(102, 25);
             lblTotal.TabIndex = 3;
             lblTotal.Text = "Total: $0.00";
             lblTotal.Click += label1_Click;
             // 
             // Cart
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(1285, 594);
             Controls.Add(lblTotal);
             Controls.Add(btnRemove);
             Controls.Add(dataGridView1);
             Controls.Add(btnconfirmorder);
+            Margin = new Padding(4, 4, 4, 4);
             Name = "Cart";
             Text = "Form1";
+            Load += CartForm_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
             PerformLayout();

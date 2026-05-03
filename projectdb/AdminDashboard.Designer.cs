@@ -39,7 +39,7 @@
             // 
             Vendors.Location = new Point(154, 171);
             Vendors.Name = "Vendors";
-            Vendors.Size = new Size(165, 68);
+            Vendors.Size = new Size(230, 87);
             Vendors.TabIndex = 0;
             Vendors.Text = "Vendors";
             Vendors.UseVisualStyleBackColor = true;
@@ -47,9 +47,9 @@
             // 
             // button1
             // 
-            button1.Location = new Point(433, 175);
+            button1.Location = new Point(433, 171);
             button1.Name = "button1";
-            button1.Size = new Size(162, 64);
+            button1.Size = new Size(216, 87);
             button1.TabIndex = 1;
             button1.Text = "Users";
             button1.UseVisualStyleBackColor = true;
@@ -57,9 +57,9 @@
             // 
             // button2
             // 
-            button2.Location = new Point(157, 310);
+            button2.Location = new Point(154, 282);
             button2.Name = "button2";
-            button2.Size = new Size(162, 64);
+            button2.Size = new Size(230, 74);
             button2.TabIndex = 2;
             button2.Text = "Products ";
             button2.UseVisualStyleBackColor = true;
@@ -67,9 +67,9 @@
             // 
             // button3
             // 
-            button3.Location = new Point(433, 310);
+            button3.Location = new Point(433, 282);
             button3.Name = "button3";
-            button3.Size = new Size(162, 64);
+            button3.Size = new Size(216, 74);
             button3.TabIndex = 3;
             button3.Text = "Categories ";
             button3.UseVisualStyleBackColor = true;
@@ -77,16 +77,18 @@
             // 
             // textBox1
             // 
+            textBox1.BackColor = SystemColors.Menu;
             textBox1.Font = new Font("Segoe UI", 24F);
-            textBox1.Location = new Point(45, 31);
+            textBox1.ForeColor = SystemColors.InfoText;
+            textBox1.Location = new Point(202, 36);
             textBox1.Multiline = true;
             textBox1.Name = "textBox1";
-            textBox1.Size = new Size(217, 79);
+            textBox1.Size = new Size(377, 83);
             textBox1.TabIndex = 4;
-            textBox1.Text = "Hello sir ,";
+            textBox1.Text = "Welcome Back ";
             textBox1.TextChanged += textBox1_TextChanged;
             // 
-            // Form1
+            // AdminDashboard
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -96,7 +98,7 @@
             Controls.Add(button2);
             Controls.Add(button1);
             Controls.Add(Vendors);
-            Name = "Form1";
+            Name = "AdminDashboard";
             Text = "Form1";
             ResumeLayout(false);
             PerformLayout();

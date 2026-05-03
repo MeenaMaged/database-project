@@ -14,7 +14,7 @@ namespace projectdb
 
         private string GetConnectionS()
         {
-            return gerges;
+            return badwy;
         }
 
         public SqlConnection GetConnection()
