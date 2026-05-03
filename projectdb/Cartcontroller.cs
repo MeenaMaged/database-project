@@ -31,7 +31,8 @@ namespace projectdb
     FROM OrderItem oi
     JOIN Product p ON oi.ProductId = p.ProductId
     JOIN Orders o ON oi.OrderId = o.OrderId
-    WHERE o.UserId = @UserId AND o.Status = 'Pending'";
+            WHERE o.UserId = @UserId
+              AND UPPER(LTRIM(RTRIM(o.Status))) = 'PENDING'";
 
                 SqlDataAdapter adapter = new SqlDataAdapter(query, con);
                 adapter.SelectCommand.Parameters.AddWithValue("@UserId", userId);
@@ -49,7 +50,10 @@ namespace projectdb
         }
         public bool ConfirmOrderByUserId(int userId)
         {
-            string query = "UPDATE Orders SET Status = 'Confirmed' WHERE UserId = @UserId";
+                        string query = @"UPDATE Orders
+SET Status = 'Confirmed'
+WHERE UserId = @UserId
+    AND UPPER(LTRIM(RTRIM(Status))) = 'PENDING'";
             projectdb.DatabaseService dbService = new projectdb.DatabaseService();
 
             using (SqlConnection con = dbService.GetConnection())
@@ -68,7 +72,8 @@ namespace projectdb
             string query = @"SELECT SUM(oi.Quantity * oi.UnitPrice) 
                      FROM OrderItem oi
                      JOIN Orders o ON oi.OrderId = o.OrderId
-                     WHERE o.UserId = @UserId AND o.Status = 'Pending'";
+                                         WHERE o.UserId = @UserId
+                                             AND UPPER(LTRIM(RTRIM(o.Status))) = 'PENDING'";
 
             projectdb.DatabaseService dbService = new projectdb.DatabaseService();
             using (SqlConnection con = dbService.GetConnection())
@@ -89,7 +94,7 @@ namespace projectdb
             string query = @"DELETE oi FROM OrderItem oi
                      JOIN Orders o ON oi.OrderId = o.OrderId
                      WHERE o.UserId = @UserId AND oi.ProductId = @ProductId 
-                     AND o.Status = 'Pending'";
+                     AND UPPER(LTRIM(RTRIM(o.Status))) = 'PENDING'";
 
             projectdb.DatabaseService dbService = new projectdb.DatabaseService();
             using (SqlConnection con = dbService.GetConnection())
@@ -114,7 +119,11 @@ namespace projectdb
                 {
                     // 1. Get or Create Pending Order
                     int orderId = -1;
-                    string checkOrder = "SELECT OrderId FROM Orders WHERE UserId = @UserId AND Status = 'Pending'";
+                                        string checkOrder = @"SELECT TOP 1 OrderId
+FROM Orders
+WHERE UserId = @UserId
+    AND UPPER(LTRIM(RTRIM(Status))) = 'PENDING'
+ORDER BY OrderId DESC";
                     using (SqlCommand cmd = new SqlCommand(checkOrder, con, trans))
                     {
                         cmd.Parameters.AddWithValue("@UserId", userId);
