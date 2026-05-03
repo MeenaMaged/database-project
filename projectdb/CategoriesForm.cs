@@ -92,7 +92,7 @@ namespace Project
             }
 
             string categoryName = txtCategoryName.Text.Trim();
-            
+
             // Extract parent category ID from ComboBox
             int? parentCategoryId = null;
             object selectedValue = cmbParentCategory.SelectedValue;
@@ -134,6 +134,6 @@ namespace Project
             }
         }
 
-      
+
     }
 }
