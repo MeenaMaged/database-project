@@ -50,7 +50,7 @@ namespace projectdb
         }
         public bool ConfirmOrderByUserId(int userId)
         {
-                        string query = @"UPDATE Orders
+            string query = @"UPDATE Orders
 SET Status = 'Confirmed'
 WHERE UserId = @UserId
     AND UPPER(LTRIM(RTRIM(Status))) = 'PENDING'";
@@ -119,7 +119,7 @@ WHERE UserId = @UserId
                 {
                     // 1. Get or Create Pending Order
                     int orderId = -1;
-                                        string checkOrder = @"SELECT TOP 1 OrderId
+                    string checkOrder = @"SELECT TOP 1 OrderId
 FROM Orders
 WHERE UserId = @UserId
     AND UPPER(LTRIM(RTRIM(Status))) = 'PENDING'
