@@ -1,4 +1,4 @@
-﻿using Microsoft.Data.SqlClient;
+using Microsoft.Data.SqlClient;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -53,9 +53,9 @@ namespace projectdb
         {
             if (dataGridView1.SelectedRows.Count > 0)
             {
-                // Get the ProductID from the hidden column or cell
-                // Note: Make sure ProductID is included in your SELECT query in the controller!
-                int productId = Convert.ToInt32(dataGridView1.SelectedRows[0].Cells["ProductID"].Value);
+                // Get the ProductId from the hidden column or cell
+                // Note: Make sure ProductId is included in your SELECT query in the controller!
+                int productId = Convert.ToInt32(dataGridView1.SelectedRows[0].Cells["ProductId"].Value);
 
                 if (_controller.RemoveFromCart(_userid, productId))
                 {

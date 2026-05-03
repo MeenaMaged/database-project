@@ -25,7 +25,7 @@ namespace Project
 
         private void LoadVendors()
         {
-            string q = "SELECT ID, Name FROM Vendor";
+            string q = "SELECT VendorId, Name FROM Vendor";
             using (var con = _dbService.GetConnection())
             using (var cmd = new SqlCommand(q, con))
             using (var adapter = new SqlDataAdapter(cmd))
@@ -35,7 +35,7 @@ namespace Project
                 {
                     adapter.Fill(table);
                     comboBoxVendor.DisplayMember = "Name";
-                    comboBoxVendor.ValueMember = "ID";
+                    comboBoxVendor.ValueMember = "VendorId";
                     comboBoxVendor.DataSource = table;
                 }
                 catch (Exception ex)
@@ -47,7 +47,7 @@ namespace Project
 
         private void LoadProduct()
         {
-            string q = "SELECT * FROM Product WHERE ID = @id";
+            string q = "SELECT * FROM Product WHERE ProductId = @id";
             using (var con = _dbService.GetConnection())
             using (var cmd = new SqlCommand(q, con))
             {
@@ -61,7 +61,7 @@ namespace Project
                         {
                             textBoxName.Text = reader["Name"].ToString();
                             textBoxPrice.Text = reader["Price"].ToString();
-                            comboBoxVendor.SelectedValue = Convert.ToInt32(reader["VendorID"]);
+                            comboBoxVendor.SelectedValue = Convert.ToInt32(reader["VendorId"]);
                         }
                     }
                 }
@@ -87,11 +87,11 @@ namespace Project
             string q;
             if (_productId == -1)
             {
-                q = "INSERT INTO Product (Name, Price, VendorID) VALUES (@name, @price, @vendor)";
+                q = "INSERT INTO Product (Name, Price, VendorId) VALUES (@name, @price, @vendor)";
             }
             else
             {
-                q = "UPDATE Product SET Name=@name, Price=@price, VendorID=@vendor WHERE ID=@id";
+                q = "UPDATE Product SET Name=@name, Price=@price, VendorId=@vendor WHERE ProductId=@id";
             }
 
             using (var con = _dbService.GetConnection())

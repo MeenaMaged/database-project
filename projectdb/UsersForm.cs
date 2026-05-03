@@ -1,4 +1,4 @@
-﻿using Microsoft.Data.SqlClient;
+using Microsoft.Data.SqlClient;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -24,7 +24,7 @@ namespace Project
         {
 
             // Fetching all data from the Users table
-            string query = "SELECT * FROM Users";
+            string query = "SELECT UserId, Email, Role, FirstName, LastName FROM Users";
 
             using (SqlConnection con = _dbService.GetConnection())
             {

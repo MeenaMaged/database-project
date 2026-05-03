@@ -41,6 +41,12 @@ namespace projectdb
                     home.Show();
                     this.Hide();
                 }
+                else if (userInfo.Value.Role == "Vendor")
+                {
+                    VendorScreen vendorScreen = new VendorScreen();
+                    vendorScreen.Show();
+                    this.Hide();
+                }
             }
             else
             {

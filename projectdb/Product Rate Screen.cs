@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Data;
 using System.Windows.Forms;
 using Microsoft.Data.SqlClient;
@@ -54,7 +54,7 @@ namespace projectdb
                 {
                     conn.Open();
 
-                    string sql = @"INSERT INTO Rate (UserID, ProductID, Value, Comment) 
+                    string sql = @"INSERT INTO Rate (UserId, ProductId, Value, Comment) 
                                  VALUES (@uID, @pID, @val, @comment)";
 
                     using (SqlCommand cmd = new SqlCommand(sql, conn))

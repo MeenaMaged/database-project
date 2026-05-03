@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Data;
 using Microsoft.Data.SqlClient;
 using System.Windows.Forms;
@@ -52,13 +52,13 @@ namespace projectdb
 
                     string sql = $@"SELECT p.Name, p.Price, v.StoreName, c.Name as CategoryName 
                                  FROM Product p 
-                                 JOIN Vendor v ON p.VendorID = v.VendorID 
-                                 JOIN Category c ON p.CategoryID = c.CategoryID 
-                                 WHERE {filterColumn} LIKE @search";
+                                 JOIN Vendor v ON p.VendorId = v.VendorId 
+                                 JOIN Category c ON p.CategoryId = c.CategoryId 
+                                 WHERE {filterColumn} LIKE @searchText";
 
                     using (SqlCommand cmd = new SqlCommand(sql, conn))
                     {
-                        cmd.Parameters.AddWithValue("@search", searchText + "%");
+                        cmd.Parameters.AddWithValue("@searchText", searchText + "%");
                         SqlDataAdapter da = new SqlDataAdapter(cmd);
                         da.Fill(dt);
                         dataGridViewResults.DataSource = dt;
