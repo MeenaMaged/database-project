@@ -24,13 +24,11 @@ namespace projectdb
 
             if (userInfo.HasValue)
             {
-                Console.WriteLine($"User ID: {userInfo.Value.UserId}, Role: {userInfo.Value.Role}"); // Debugging line to check
-                // Store the User Id and Role in the global static class
+              
                 Session.UserId = userInfo.Value.UserId;
                 Session.Role = userInfo.Value.Role;
 
-                //MessageBox.Show($"Login successful! Welcome, {Session.Role}.");
-                // Navigate to next screen
+               
                 if (userInfo.Value.Role == "Admin")
                 {
                     AdminDashboard adminDashboard = new AdminDashboard();
