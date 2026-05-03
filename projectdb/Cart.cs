@@ -17,6 +17,10 @@ namespace projectdb
         public Cart()
         {
             InitializeComponent();
+            if (Session.UserId.HasValue)
+            {
+                _userid = Session.UserId.Value;
+            }
         }
         private void CartForm_Load(object sender, EventArgs e)
         {

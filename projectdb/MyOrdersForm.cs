@@ -27,6 +27,15 @@ namespace Project
 
         private void LoadOrders()
         {
+            if (!projectdb.Session.UserId.HasValue)
+            {
+                MessageBox.Show("Please login to view your orders.");
+                this.Close();
+                return;
+            }
+
+            int currentUserId = projectdb.Session.UserId.Value;
+
             // Clear existing columns in case we reload
             dataGridView1.Columns.Clear();
             dataGridView1.DataSource = null;

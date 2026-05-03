@@ -102,5 +102,82 @@ namespace projectdb
             }
         }
 
+        public bool AddToCart(int userId, int productId, int quantity, decimal unitPrice)
+        {
+            projectdb.DatabaseService dbService = new projectdb.DatabaseService();
+            using (SqlConnection con = dbService.GetConnection())
+            {
+                con.Open();
+                SqlTransaction trans = con.BeginTransaction();
+
+                try
+                {
+                    // 1. Get or Create Pending Order
+                    int orderId = -1;
+                    string checkOrder = "SELECT OrderId FROM Orders WHERE UserId = @UserId AND Status = 'Pending'";
+                    using (SqlCommand cmd = new SqlCommand(checkOrder, con, trans))
+                    {
+                        cmd.Parameters.AddWithValue("@UserId", userId);
+                        object result = cmd.ExecuteScalar();
+                        if (result != null)
+                        {
+                            orderId = Convert.ToInt32(result);
+                        }
+                        else
+                        {
+                            string createOrder = "INSERT INTO Orders (UserId, Status, CreatedAt) OUTPUT INSERTED.OrderId VALUES (@UserId, 'Pending', GETDATE())";
+                            using (SqlCommand cmdInsert = new SqlCommand(createOrder, con, trans))
+                            {
+                                cmdInsert.Parameters.AddWithValue("@UserId", userId);
+                                orderId = (int)cmdInsert.ExecuteScalar();
+                            }
+                        }
+                    }
+
+                    // 2. Check if product already in cart
+                    string checkItem = "SELECT Quantity FROM OrderItem WHERE OrderId = @OrderId AND ProductId = @ProductId";
+                    using (SqlCommand cmd = new SqlCommand(checkItem, con, trans))
+                    {
+                        cmd.Parameters.AddWithValue("@OrderId", orderId);
+                        cmd.Parameters.AddWithValue("@ProductId", productId);
+                        object result = cmd.ExecuteScalar();
+
+                        if (result != null)
+                        {
+                            // Update quantity
+                            string updateItem = "UPDATE OrderItem SET Quantity = Quantity + @Qty WHERE OrderId = @OrderId AND ProductId = @ProductId";
+                            using (SqlCommand cmdUpd = new SqlCommand(updateItem, con, trans))
+                            {
+                                cmdUpd.Parameters.AddWithValue("@Qty", quantity);
+                                cmdUpd.Parameters.AddWithValue("@OrderId", orderId);
+                                cmdUpd.Parameters.AddWithValue("@ProductId", productId);
+                                cmdUpd.ExecuteNonQuery();
+                            }
+                        }
+                        else
+                        {
+                            // Insert new item
+                            string insertItem = "INSERT INTO OrderItem (OrderId, ProductId, Quantity, UnitPrice) VALUES (@OrderId, @ProductId, @Qty, @Price)";
+                            using (SqlCommand cmdIns = new SqlCommand(insertItem, con, trans))
+                            {
+                                cmdIns.Parameters.AddWithValue("@OrderId", orderId);
+                                cmdIns.Parameters.AddWithValue("@ProductId", productId);
+                                cmdIns.Parameters.AddWithValue("@Qty", quantity);
+                                cmdIns.Parameters.AddWithValue("@Price", unitPrice);
+                                cmdIns.ExecuteNonQuery();
+                            }
+                        }
+                    }
+
+                    trans.Commit();
+                    return true;
+                }
+                catch (Exception ex)
+                {
+                    trans.Rollback();
+                    throw new Exception("Error adding to cart: " + ex.Message);
+                }
+            }
+        }
     }
 }

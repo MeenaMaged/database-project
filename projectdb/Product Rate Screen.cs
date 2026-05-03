@@ -54,7 +54,7 @@ namespace projectdb
                 {
                     conn.Open();
 
-                    string sql = @"INSERT INTO Rate (UserId, ProductId, Value, Comment) 
+                    string sql = @"INSERT INTO Rate (UserId, ProductId, Rating, Review) 
                                  VALUES (@uID, @pID, @val, @comment)";
 
                     using (SqlCommand cmd = new SqlCommand(sql, conn))

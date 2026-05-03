@@ -116,8 +116,8 @@ namespace Project
 
         private void OpenProductDetails(int productId)
         {
-            // Product details screen is built by another teammate; placeholder for now.
-            MessageBox.Show("Product details for ID " + productId + " will open here.", "Info");
+            ProductDetailsForm details = new ProductDetailsForm(productId);
+            details.ShowDialog();
         }
 
         private void btnBack_Click(object sender, EventArgs e)
